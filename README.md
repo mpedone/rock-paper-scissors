@@ -26,3 +26,5 @@ Of course, the obvious change is to have the game played in the actual webpage, 
 ### UI Branch
 
 We've created a branch of the original project with the intent of created a UI for the game. I may try to fix some of my logic before continuing on, because I don't feel like my current code is clean enough.
+
+I fixed the issues above, and now I think I will merge them back into the main branch before continuing. I know this isn't what the workflow was supposed to be, but this is a normal workflow, right? So, it's good practice.

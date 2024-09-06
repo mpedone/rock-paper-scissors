@@ -12,17 +12,19 @@ function getHumanChoice() {
     let keepAsking = 1;
     while(keepAsking) {
         let humanChoice = prompt("Please pick a weapon.");
-        if(humanChoice == null){
+        if(humanChoice === null){
             keepAsking = 0;
+            return undefined;
         } else if (humanChoices.includes(humanChoice.toLowerCase())) {
-            return humanChoice.toLowerCase();
             keepAsking = 0;
-        }
+            return humanChoice.toLowerCase();
+        } else alert("Please enter 'rock', 'paper', or 'scissors'");
     }    
 }
 
 function playRound(humanChoice, computerChoice) {
     // Compare selections
+    if (humanChoice === undefined) return "quit"
     if (humanChoice === computerChoice) {
         return "tie";
     } else {
@@ -85,6 +87,9 @@ function playGame(rounds) {
             humanScore += 1;
             verb = victoryMethod(humanSelection);
             console.log(`${message} ${humanSelection} ${verb} ${computerSelection}. Human wins!`);
+        } else if (result === "quit") {
+            computerScore += 1;
+            console.log("Human chose to quit. Computer wins automatically!");
         } else {
             computerScore += 1;
             verb = victoryMethod(computerSelection);
