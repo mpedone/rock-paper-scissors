@@ -22,3 +22,7 @@ Related to this is the choice validation. Currently, I simply have the prompt re
 This is just my mind thinking through where this could go. RPS is simple, and there are variations out there, but I'm envisioning a "make-your-own" version, where you could choose 3-5 (more?) "weapons" and add your own rules, then play the game.
 
 Of course, the obvious change is to have the game played in the actual webpage, not the console, which would involve input fields and some sort of dynamic output. I think that is coming down the road in The Odin Project, but if not, I'm sure it would be an interesting project.
+
+### UI Branch
+
+We've created a branch of the original project with the intent of created a UI for the game. I may try to fix some of my logic before continuing on, because I don't feel like my current code is clean enough.
