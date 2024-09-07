@@ -66,12 +66,12 @@ function victoryMethod(choice) {
 
 // playRound(humanSelection, computerSelection);
 
-function playGame(rounds) {
+function playGame() {
     let humanScore = 0;
     let computerScore = 0;
     let verb = ""
 
-    for (let i = 0; i < rounds; i++) {
+    // for (let i = 0; i < rounds; i++) {
         let humanSelection = getHumanChoice();
         let computerSelection = getComputerChoice();
 
@@ -97,7 +97,16 @@ function playGame(rounds) {
         }
         
         console.log(`User: ${humanScore}, CPU: ${computerScore}`)
-    }
+    // }
 }
 
-playGame(5);
+// playGame();
+
+const gameStart = document.querySelector('#game-buttons');
+
+gameStart.addEventListener('click', (event) => {
+    let target = event.target;
+    console.log(playRound(target.id, getComputerChoice()))
+
+    
+});

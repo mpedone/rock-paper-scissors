@@ -25,6 +25,12 @@ Of course, the obvious change is to have the game played in the actual webpage, 
 
 ### UI Branch
 
-We've created a branch of the original project with the intent of created a UI for the game. I may try to fix some of my logic before continuing on, because I don't feel like my current code is clean enough.
+I've created a branch of the original project with the intent of created a UI for the game. I may try to fix some of my logic before continuing on, because I don't feel like my current code is clean enough.
 
 I fixed the issues above, and now I think I will merge them back into the main branch before continuing. I know this isn't what the workflow was supposed to be, but this is a normal workflow, right? So, it's good practice.
+
+#### Game Buttons
+
+I've created buttons to play the game. Click on one of the options, and the playRound() function is called. I need to edit the code now to actually play the game; in my console version, playRound() returns just the winner: user, computer, or tie, and then other functions handle reporting the results and updating the score. I won't need getHumanChoice() at all anymore, whcih also means that I probably didn't need to fix that function before starting on this, but, again, it was good practice.
+
+Going forward from here, I will need to tweak the gameplay functions. playRound() should take the user input (as a parameter), call getComputerChoice(), call a new function to determine the winner, create a new div to display the winner, format the text, and update the scores - it will return the winner. playGame() will be called with the parameter 5 so that playRound() will be called 5 times, and will keep track of the scores. After the loop, it will output the winner.
