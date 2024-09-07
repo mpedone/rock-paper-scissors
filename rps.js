@@ -13,21 +13,21 @@ function determineRoundWinner(human, computer){
         switch (human) {
             case "rock":
                 if (computer === "scissors") {
-                    return "user";
+                    return "human";
                 } else if (computer === "paper") {
                     return "computer";
                 }
                 break;
             case "paper":
                 if (computer === "rock") {
-                    return "user";
+                    return "human";
                 } else if (computer === "scissors") {
                     return "computer";
                 }
                 break;
             case "scissors":
                 if (computer === "paper") {
-                    return "user";
+                    return "human";
                 } else if (computer === "rock") {
                     return "computer";
                 }
@@ -38,9 +38,13 @@ function determineRoundWinner(human, computer){
 
 function playRound(humanChoice, computerChoice, humanPoints, computerPoints) {
     let roundWinner = determineRoundWinner(humanChoice, computerChoice);
-    return roundWinner;
+    console.log(humanChoice + " " + computerChoice);
     // update score of winner
+    humanPoints += (roundWinner === "human" || roundWinner === "tie");
+    computerPoints += (roundWinner === "computer" || roundWinner === "tie");
 
+    console.log(`Human: ${humanPoints}, Computer: ${computerPoints}`);
+    return roundWinner;
     // output winner to roundPara
     // output score to roundPara
     // check if either score === 5
