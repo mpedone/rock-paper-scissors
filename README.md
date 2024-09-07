@@ -34,3 +34,20 @@ I fixed the issues above, and now I think I will merge them back into the main b
 I've created buttons to play the game. Click on one of the options, and the playRound() function is called. I need to edit the code now to actually play the game; in my console version, playRound() returns just the winner: user, computer, or tie, and then other functions handle reporting the results and updating the score. I won't need getHumanChoice() at all anymore, whcih also means that I probably didn't need to fix that function before starting on this, but, again, it was good practice.
 
 Going forward from here, I will need to tweak the gameplay functions. playRound() should take as parameters: the user input (from the button), getComputerChoice(), and the current scores, call a new function to determine the winner, format the text, update the scores and display the round winner. playGame() will created the results div and will initialize the scores then send them to playGame() which will return the scores. playGame() will check after each round if either (or both) player has 5 points. If so, it will print the winner in the results div it created.
+
+#### Game play
+
+I'm still a little torn on playGame() and playRound(). I want to keep the functions as simple as possible, but it feels odd to call playRound() from playGame, send a bunch of parameters, and then immediately call ANOTHER function with two of those parameters, just to return something back to playGame(). Why wouldn't I just call determineRoundWinner() from playGame()?
+
+playGame(){
+    //define score variables
+    //define DOM elements
+    //add button listener
+    //while either score < 5
+        //call determineRoundWinner()
+        //update scores
+        //build round results message
+    //if score > 5
+        //determine gameWinner
+        //output results
+}

@@ -38,19 +38,31 @@ function determineRoundWinner(human, computer){
 
 function playRound(humanChoice, computerChoice, humanPoints, computerPoints) {
     let roundWinner = determineRoundWinner(humanChoice, computerChoice);
-    console.log(humanChoice + " " + computerChoice);
-    // update score of winner
+    console.log(humanChoice + " " + computerChoice); //remove at end
+
     humanPoints += (roundWinner === "human" || roundWinner === "tie");
     computerPoints += (roundWinner === "computer" || roundWinner === "tie");
 
-    console.log(`Human: ${humanPoints}, Computer: ${computerPoints}`);
-    return roundWinner;
-    // output winner to roundPara
-    // output score to roundPara
+    let victoryMsg = "";
+
+    if(roundWinner === "tie"){
+        victoryMsg = "It's a tie!";
+    } else {
+        victoryMsg = `${(roundWinner.toUpperCase())} wins!`;
+    }
+
+    let msg = `Human chose: ${humanChoice}. <br>
+    Computer chose: ${computerChoice}. <br>
+    ${victoryMsg}`;
+    
+    return [msg, humanPoints, computerPoints];
+    
+    
     // check if either score === 5
     // if score === 5, game ends, winner declared
 }
 
+// Not used at the moment, but I might use this again later
 function victoryMethod(choice) {
     if (choice === "rock") {
         return "smashes";
@@ -106,9 +118,15 @@ gameStart.addEventListener('click', (event) => {
     const roundWinner = playRound(target.id, getComputerChoice(), humanScore, computerScore);
 
 const roundResults = document.querySelector("div#round-results");
-let roundPara = document.createElement("para");
+let roundPara1 = document.createElement("p");
 
-roundPara.textContent += `${roundWinner} `
-roundResults.appendChild(roundPara);
+// roundPara1.innerHTML = "";
+// roundResults.appendChild(roundPara1);
+
+roundPara1.innerHTML = `${roundWinner[0]} <br> 
+Human score: ${roundWinner[1]} <br>
+Computer score: ${roundWinner[2]}`;
+
+roundResults.appendChild(roundPara1);
     
 });
