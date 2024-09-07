@@ -39,15 +39,31 @@ Going forward from here, I will need to tweak the gameplay functions. playRound(
 
 I'm still a little torn on playGame() and playRound(). I want to keep the functions as simple as possible, but it feels odd to call playRound() from playGame, send a bunch of parameters, and then immediately call ANOTHER function with two of those parameters, just to return something back to playGame(). Why wouldn't I just call determineRoundWinner() from playGame()?
 
-playGame(){
-    //define score variables
-    //define DOM elements
-    //add button listener
-    //while either score < 5
-        //call determineRoundWinner()
-        //update scores
-        //build round results message
-    //if score > 5
-        //determine gameWinner
-        //output results
-}
+- playGame()
+  - define score variables
+  - define DOM elements
+  - add button listener
+  - while either score < 5
+    - call determineRoundWinner()
+    - update scores
+    - build round results message
+  - if score > 5
+    - determine gameWinner
+    - output results
+
+or
+
+- playGame()
+  - define score vars
+  - define DOM elements
+  - add button listener
+  - while score < 5
+    - playRound()
+    - output messages
+    - playRound()
+    - output messages
+  - when score > 5
+    - determine winner
+    - display winner
+
+So, I went with the playRound() method. This kept the playGame() function a little cleaner.
