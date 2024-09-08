@@ -39,7 +39,7 @@ function playRound(human, computer){
 function updateScore(winner){
     let points = [0, 0]
     points = winner === "human" ? [1, 0] : winner === "computer" ? [0, 1] : [1, 1]
-    return points
+    return points;
 }
 
 function victoryMessage(winner) {
@@ -63,12 +63,12 @@ function victoryMethod(winner, choice) {
 }
 
 function gameOver(humanScore, computerScore){
-    if (humanScore === 5) {
-        return "Human reached 5 points first. Human Wins! <br> GAME OVER";
+    if (humanScore === 5 && computerScore === 5) {
+        return "Both reached 5. It's a tie!<br>GAME OVER!";
     } else if (computerScore === 5){
         return "Computer reached 5 points first. Computer Wins! <br> GAME OVER";
-    } else if (humanScore === 5 && computerScore === 5){
-        return "Both reached 5. It's a tie! GAME OVER!"
+    } else if (humanScore === 5){
+        return "Human reached 5 points first. Human Wins! <br> GAME OVER";
     } else {
         return 0;
     }
@@ -94,7 +94,7 @@ function playGame() {
         
         humanScore += updateScore(roundWinner)[0]
         computerScore += updateScore(roundWinner)[1]
-
+        
         // const winningWeapon = roundWinner + "Weapon";
         // let method = victoryMethod(winningWeapon);
 
