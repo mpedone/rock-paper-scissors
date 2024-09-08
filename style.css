@@ -1,3 +1,33 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 900px;
+    justify-content: flex-start;
+}
+
+.heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+h1 {
+    display: flex;
+}
+
+p {
+    padding: 0 200px;
+}
+
 #game-buttons {
-    width: fit-content;
+    width: 600px;
+    display: flex;
+}
+
+button {
+    height: 50px;
+    width: 500px;
+    flex: 1 auto;
 }
