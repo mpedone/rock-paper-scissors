@@ -70,10 +70,10 @@ So, I went with the playRound() method. This kept the playGame() function a litt
 
 Next steps:
 
-1. Move the end-of-game statements to a function
-2. Move the score update to a function
-3. Simplify the playRound return statement to only need to return winner
-    - remove determineRoundWinner()
+1. Move the end-of-game statements to a function (Done)
+2. Move the score update to a function (moved out of playRound(), not sure it needs its own function)
+3. Simplify the playRound return statement to only need to return winner (Done)
+    - remove determineRoundWinner() (Done)
 4. Add a title and some formatting to make it look nicer
 
 Down the road:

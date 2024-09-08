@@ -5,7 +5,7 @@ function getComputerChoice() {
     return choice;
 }
 
-function determineRoundWinner(human, computer){
+function playRound(human, computer){
     // Compare selections
     if (human === computer) {
         return "tie";
@@ -36,29 +36,17 @@ function determineRoundWinner(human, computer){
     }
 }
 
-function playRound(humanChoice, computerChoice, humanPoints, computerPoints) {
-    let winner = determineRoundWinner(humanChoice, computerChoice);
-
-    humanPoints += (winner === "human" || winner === "tie");
-    computerPoints += (winner === "computer" || winner === "tie");
-
-    let victoryMsg = "";
-
+function victoryMessage(winner) {
     if(winner === "tie"){
         victoryMsg = "It's a tie!";
     } else {
         victoryMsg = `${(winner.toUpperCase())} wins!`;
     }
-
-    let msg = `Human chose: ${humanChoice}<br>
-    Computer chose: ${computerChoice}<br><br>
-    ${victoryMsg}<br>`;
-    
-    return [msg, humanPoints, computerPoints];
+    return victoryMsg;
 }
 
 // Not used at the moment, but I might use this again later
-function victoryMethod(choice) {
+function victoryMethod(winner, choice) {
     if (choice === "rock") {
         return "smashes";
     } else if (choice === "paper") {
@@ -68,13 +56,25 @@ function victoryMethod(choice) {
     }
 }
 
+function gameOver(humanScore, computerScore){
+    if (humanScore === 5) {
+        return "Human reached 5 points first. Human Wins! <br> GAME OVER";
+    } else if (computerScore === 5){
+        return "Computer reached 5 points first. Computer Wins! <br> GAME OVER";
+    } else if (humanScore === 5 && computerScore === 5){
+        return "Both reached 5. It's a tie! GAME OVER!"
+    } else {
+        return 0;
+    }
+}
+
 function playGame() {
     let humanScore = 0;
     let computerScore = 0;
 
     const gameStart = document.querySelector('#game-buttons');
     const roundResults = document.querySelector("div#round-results");
-    let roundPara1 = document.createElement("p");
+    let roundPara = document.createElement("p");
     let gamePara = document.createElement("p");
     
     gameStart.addEventListener('click', (event) => {
@@ -82,32 +82,34 @@ function playGame() {
         roundResults.appendChild(gamePara);
 
         let target = event.target;
-        const roundWinner = playRound(target.id, getComputerChoice(), humanScore, computerScore);
+        let humanWeapon = target.id;
+        let computerWeapon = getComputerChoice();
+        const roundWinner = playRound(humanWeapon, computerWeapon);
         
-        humanScore = roundWinner[1];
-        computerScore = roundWinner[2];
+        humanScore += (roundWinner === "human" || roundWinner === "tie");
+        computerScore += (roundWinner === "computer" || roundWinner === "tie");
 
-        roundPara1.innerHTML = `${roundWinner[0]} <br> 
-        Human score: ${roundWinner[1]} <br>
-        Computer score: ${roundWinner[2]}`;
+        // const winningWeapon = roundWinner + "Weapon";
+        // let method = victoryMethod(winningWeapon);
 
-        roundResults.appendChild(roundPara1);
+        let msg = victoryMessage(roundWinner);
 
-        if (humanScore === 5) {
-            gamePara.innerHTML = "Human reached 5 points first. Human Wins! <br> GAME OVER";
+        roundPara.innerHTML = `Human chose: ${humanWeapon} <br>
+        Computer chose: ${computerWeapon}. <br><br>
+        ${msg} <br> 
+        Human score: ${humanScore} <br>
+        Computer score: ${computerScore}`;
+
+        roundResults.appendChild(roundPara);
+
+        let endGame = gameOver(humanScore, computerScore);
+
+        if(endGame){
             humanScore = 0;
             computerScore = 0;
-        } else if (computerScore === 5){
-            gamePara.innerHTML = "Computer reached 5 points first. Computer Wins! <br> GAME OVER";
-            humanScore = 0;
-            computerScore = 0;
-        } else if (humanScore === 5 && computerScore === 5){
-            gamePara.innerHTML = "Both reached 5. It's a tie! GAME OVER!"
-            humanScore = 0;
-            computerScore = 0;
+            gamePara.innerHTML = endGame;
+            roundResults.appendChild(gamePara);
         }
-
-        roundResults.appendChild(gamePara);
     });
 }
 
