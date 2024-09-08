@@ -36,6 +36,12 @@ function playRound(human, computer){
     }
 }
 
+function updateScore(winner){
+    let points = [0, 0]
+    points = winner === "human" ? [1, 0] : winner === "computer" ? [0, 1] : [1, 1]
+    return points
+}
+
 function victoryMessage(winner) {
     if(winner === "tie"){
         victoryMsg = "It's a tie!";
@@ -86,8 +92,8 @@ function playGame() {
         let computerWeapon = getComputerChoice();
         const roundWinner = playRound(humanWeapon, computerWeapon);
         
-        humanScore += (roundWinner === "human" || roundWinner === "tie");
-        computerScore += (roundWinner === "computer" || roundWinner === "tie");
+        humanScore += updateScore(roundWinner)[0]
+        computerScore += updateScore(roundWinner)[1]
 
         // const winningWeapon = roundWinner + "Weapon";
         // let method = victoryMethod(winningWeapon);
