@@ -66,4 +66,18 @@ or
     - determine winner
     - display winner
 
-So, I went with the playRound() method. This kept the playGame() function a little cleaner.
+So, I went with the playRound() method. This kept the playGame() function a little cleaner. Unfortunately, at the moment, playRound() returns a list, which I think is fine, but utilizing them in the output means using a lot of bracket notation in playGame(), which I feel is less straight-forward. I could create variables and set them to each item in the returned list, but this feels like a work-around rather than a fix. I fear that returning a list also indicates that the playRound() function is doing too much. I think that I can get rid of the determineRoundWinner() function, or rather make that the playRound() function, and have a separate function update the scores.
+
+Next steps:
+
+1. Move the end-of-game statements to a function
+2. Move the score update to a function
+3. Simplify the playRound return statement to only need to return winner
+    - remove determineRoundWinner()
+4. Add a title and some formatting to make it look nicer
+
+Down the road:
+
+1. Full styling - colors, fonts, etc
+2. Stylize the buttons
+3. Make the output more verbose/descriptive
