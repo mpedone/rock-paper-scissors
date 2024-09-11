@@ -79,6 +79,6 @@ Next steps:
 Down the road:
 
 1. Full styling - colors, fonts, etc
-2. Stylize the buttons
+2. Stylize the buttons (done, well... started)
 3. Make the output more verbose/descriptive
 4. Investigate object destructuring to simplify score update
