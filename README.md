@@ -85,5 +85,4 @@ Down the road:
 
 ### CSS Changes
 
-Removed the width from the body tag, as it wasn't needed. 
-Changed the heading > p tag to have a max-width of 600px, and removed the padding. When the window resized, the text either got too wide or too squished. Looks much better now. Game buttons div now wraps, so that the buttons stay on-screen, even on devices. The buttons I actually made a little smaller (technically, they remained small because the flex div they were in restricted them), and to grow/shrink as needed to fill the space and still be legible. I also tweaked outer shadow/glow on the :hover and :active states to differentiate them more.
+Removed the width from the body tag, as it wasn't needed. Changed the heading > p tag to have a max-width of 600px, and removed the padding. When the window resized, the text either got too wide or too squished. Looks much better now. Game buttons div now wraps, so that the buttons stay on-screen, even on devices. The buttons I actually made a little smaller (technically, they remained small because the flex div they were in restricted them), and to grow/shrink as needed to fill the space and still be legible. I also tweaked outer shadow/glow on the :hover and :active states to differentiate them more.
