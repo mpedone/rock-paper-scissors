@@ -74,7 +74,7 @@ Next steps:
 2. Move the score update to a function (moved out of playRound(), not sure it needs its own function)
 3. Simplify the playRound return statement to only need to return winner (Done)
     - remove determineRoundWinner() (Done)
-4. Add a title and some formatting to make it look nicer
+4. Add a title and some formatting to make it look nicer (in progress)
 
 Down the road:
 
@@ -82,3 +82,8 @@ Down the road:
 2. Stylize the buttons (done, well... started)
 3. Make the output more verbose/descriptive
 4. Investigate object destructuring to simplify score update
+
+### CSS Changes
+
+Removed the width from the body tag, as it wasn't needed. 
+Changed the heading > p tag to have a max-width of 600px, and removed the padding. When the window resized, the text either got too wide or too squished. Looks much better now. Game buttons div now wraps, so that the buttons stay on-screen, even on devices. The buttons I actually made a little smaller (technically, they remained small because the flex div they were in restricted them), and to grow/shrink as needed to fill the space and still be legible. I also tweaked outer shadow/glow on the :hover and :active states to differentiate them more.
